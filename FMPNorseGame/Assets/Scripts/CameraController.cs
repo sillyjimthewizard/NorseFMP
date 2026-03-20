@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController instance;
 
     public CinemachineOrbitalFollow CameraOrbit;
+    public CinemachineInputAxisController Inputcontroller;
+    public bool CanZoom;
 
     public int CameraOrbitMax;
     public int CameraOrbitMin;
@@ -13,19 +16,24 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         CameraOrbit = this.GetComponent<CinemachineOrbitalFollow>();
+        Inputcontroller = this.GetComponent<CinemachineInputAxisController>();
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f && CameraOrbit.Radius >= CameraOrbitMax && CameraOrbit.Radius <= CameraOrbitMin) // forward
+        if (CanZoom == true)
         {
-            CameraOrbit.Radius++;
-        }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f && CameraOrbit.Radius >= CameraOrbitMax && CameraOrbit.Radius <= CameraOrbitMin) // forward
+            {
+                CameraOrbit.Radius++;
+            }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f && CameraOrbit.Radius <= CameraOrbitMin && CameraOrbit.Radius >= CameraOrbitMax) // Backward
-        {
-            CameraOrbit.Radius--;
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f && CameraOrbit.Radius <= CameraOrbitMin && CameraOrbit.Radius >= CameraOrbitMax) // Backward
+            {
+                CameraOrbit.Radius--;
+            }
         }
 
         if (CameraOrbit.Radius < CameraOrbitMax)
