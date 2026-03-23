@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Canvas
   - NavMesh
+  - SpawnPoints
+  - TheBoss
   layers:
   - Default
   - TransparentFX
