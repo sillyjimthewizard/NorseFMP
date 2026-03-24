@@ -26,17 +26,6 @@ public class EnemyAi : MonoBehaviour
         InitialDistance = DistanceToBoss;
     }
 
-    // Update is called once per frame
-    /* void OnCollisionEnter(Collision other)
-     {
-         if (other.gameObject.CompareTag("TheBoss"))
-         {
-             Debug.Log("bosshit");
-         }
-     }
-
-     */
-
 
     public void Update()
     {
