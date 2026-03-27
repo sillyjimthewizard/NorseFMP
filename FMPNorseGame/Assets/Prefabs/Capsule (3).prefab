@@ -149,3 +149,10 @@ MonoBehaviour:
   agent: {fileID: 0}
   moveTo: {x: 0, y: 0, z: 0}
   TheBoss: {fileID: 0}
+  DistanceToBoss: 0
+  InitialDistance: 0
+  StrengthMult: 1
+  SpeedMult: 0
+  HealthMult: 0
+  CoinMult: 1.25
+  damage: 2

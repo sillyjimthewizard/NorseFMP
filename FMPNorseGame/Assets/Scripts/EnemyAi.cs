@@ -13,6 +13,13 @@ public class EnemyAi : MonoBehaviour
     public float DistanceToBoss;
     public float InitialDistance;
 
+    [Header("UnitStats")]
+    public float StrengthMult;
+    public float SpeedMult;
+    public float HealthMult;
+    public float CoinMult;
+    public float damage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,14 +40,17 @@ public class EnemyAi : MonoBehaviour
 
         if (DistanceToBoss <= 2)
         {
-            
+            damage = damage * StrengthMult;
+            BossManager.instance.BossHp -= damage;
             Destroy(this.gameObject);
         }
     }
 
     public void OnDestroy()
     {
-       GameManager.Instance.Currency += InitialDistance - DistanceToBoss;
+        int CoinCount = Mathf.RoundToInt(InitialDistance - DistanceToBoss);
+
+        GameManager.Instance.Currency += CoinCount * CoinMult;
     }
 
     
