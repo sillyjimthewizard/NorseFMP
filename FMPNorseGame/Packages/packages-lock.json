@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "ca.tim-cstj.fast-play": {
+      "version": "file:ca.tim-cstj.fast-play",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.8",
       "depth": 0,
