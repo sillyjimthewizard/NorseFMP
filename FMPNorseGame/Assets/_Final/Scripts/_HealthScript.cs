@@ -2,23 +2,51 @@ using UnityEngine;
 
 public class _HealthScript : MonoBehaviour
 {
-    public int health;
+   
     public bool isBoss;
+
+    public ScriptableObject CurrentStats;
+    public ScriptableObject[] BossStats;
+
+    [Header("Floats")]
+    public float Health;
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public void SetHp()
+    {
+        if (isBoss)
+        {
+            BossDataMaker tempBossdata;
+            CurrentStats = BossStats[_GameManager.Instance.BossStage];
+            tempBossdata = (BossDataMaker)CurrentStats;
+            Health = tempBossdata.BossHp;
+        }
+        else
+        {
+            
+        }
+
+    }
+
+    public void Start()
+    {
+        SetHp();
+    }
 
     private void Update()
     {
 
-        if (health <= 0)
+        if (Health <= 0)
         {
             if (isBoss)
             {
-                //KillBoss
+                Destroy(this.gameObject);
             }
             else
             {
-                //Kill me
+                Destroy(this.gameObject);
             }
 
         }

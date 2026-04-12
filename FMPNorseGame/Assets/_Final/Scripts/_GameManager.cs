@@ -10,7 +10,7 @@ public class _GameManager : MonoBehaviour
 
 
     //store your ugrades
-
+    public static _GameManager Instance;
 
     [Header("Upgrade Active")]
     [SerializeField] private bool coinMultiplierActive;
@@ -20,13 +20,41 @@ public class _GameManager : MonoBehaviour
     [SerializeField] private float coinMultiplier;
     [SerializeField] private float strengthMultiplier;
     [SerializeField] private int spawnRate;
+    public float Currency;
 
+    [Header("Tick Variables")]
+    public float TickTimer;
+    [SerializeField] private float SetTickTime;
+    [SerializeField] private float GlobalTime;
 
+    [Header("Boss Variables")]
+    public int BossStage;
 
-
-    public void TakeDamage(int damage, GameObject target)
+    public void Awake()
     {
-        //target.GetComponent<healthScript>().health -= damage;
+        Instance = this;
+        SpawnNumber = 5;
+        SetSpawns();
+    }
+
+    public void FixedUpdate()
+    {
+        if (TickTimer >= 0)
+        {
+            TickTimer -= Time.deltaTime;
+            GlobalTime += Time.deltaTime;
+        }
+        else if (TickTimer <= 0)
+        {
+            TickTimer = SetTickTime;
+            SpawnCounter++;
+            SpawnUnit();
+
+        }
+    }
+    public void TakeDamage(float damage, GameObject target)
+    {
+        target.GetComponent<_HealthScript>().Health -= damage;
     }
 
 
@@ -40,15 +68,65 @@ public class _GameManager : MonoBehaviour
         name += amount;
     }
 
-
-
-    private void Start()
+    public void UpgradeIntValue(int amount, int name)
     {
-        UpgradeFloatValue(1.9f, strengthMultiplier);
+        name += amount;
     }
 
+    public void UpgradeSpawnNum()
+    {
+
+        UpgradeIntValue(1, SpawnPointStart);
+    }
+
+    #region SpawnSystem
+
+    [Header("SpawnSystem")]
+    public GameObject[] SpawnPoints;
+    [SerializeField] private GameObject Unit;
+    public float SpawnNumber;
+    public float SpawnCounter;
+    public int SpawnPointNum;
+    public int SpawnPointStart;
 
 
+    public void SetSpawns()
+    {
+        SpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoints");
+    }
 
+    public void SpawnUnit()
+    {
+        if (SpawnCounter == SpawnNumber)
+        {
+            Debug.Log("Spawning");
 
+            for (int i = 0; i < SpawnPointStart ; i++)
+            {
+                
+                Instantiate(Unit, SpawnPoints[SpawnPointNum].gameObject.transform);
+                //i++;
+                SpawnPointNum++;
+
+            }
+            SpawnCounter = 0;
+            SpawnPointNum = 0;
+            
+
+        }
+    }
 }
+    #endregion 
+
+
+
+
+
+
+   
+
+
+
+
+
+

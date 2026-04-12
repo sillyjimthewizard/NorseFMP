@@ -12,6 +12,7 @@ public class EnemyAi : MonoBehaviour
 
     public float DistanceToBoss;
     public float InitialDistance;
+    public float DistanceToPoint;
 
     [Header("UnitStats")]
     public float StrengthMult;
@@ -20,17 +21,18 @@ public class EnemyAi : MonoBehaviour
     public float CoinMult;
     public float damage;
 
+    public float point, point2, point3;
+    public int pointCounter;
+    public float DivideBy;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         TheBoss = GameObject.Find("TheBoss");
-
-        moveTo = new Vector3(TheBoss.transform.position.x, TheBoss.transform.position.y, TheBoss.transform.position.z);
-
-        agent.SetDestination(moveTo);
         DistanceToBoss = Vector3.Distance(this.transform.position, TheBoss.transform.position);
         InitialDistance = DistanceToBoss;
+        CalculateDistance();
     }
 
 
@@ -41,8 +43,15 @@ public class EnemyAi : MonoBehaviour
         if (DistanceToBoss <= 2)
         {
             damage = damage * StrengthMult;
-            BossManager.instance.BossHp -= damage;
+            _GameManager.Instance.TakeDamage(damage, TheBoss);
             Destroy(this.gameObject);
+        }
+
+        DistanceToPoint = Vector3.Distance(this.transform.position, new Vector3 (point, moveTo.y, moveTo.z));
+        if (DistanceToPoint <= 1)
+        {
+            pointCounter++;
+            CalculateDistance();
         }
     }
 
@@ -50,8 +59,25 @@ public class EnemyAi : MonoBehaviour
     {
         int CoinCount = Mathf.RoundToInt(InitialDistance - DistanceToBoss);
 
-        GameManager.Instance.Currency += CoinCount * CoinMult;
+        _GameManager.Instance.Currency += CoinCount * CoinMult;
     }
 
-    
+    public void CalculateDistance()
+    {
+        if (pointCounter <= 2)
+        {
+            DivideBy += 0.3f;
+
+            point = TheBoss.transform.position.x * DivideBy;
+            float Additive = Random.Range(-5, 5);
+            moveTo = new Vector3(point, TheBoss.transform.position.y, TheBoss.transform.position.z + Additive);
+            //point2 = TheBoss.transform.position.x * 0.6f;
+            //point3 = TheBoss.transform.position.x * 0.9f;
+            agent.SetDestination(moveTo);
+        }
+        else
+        {
+            agent.SetDestination(TheBoss.transform.position);
+        }
+    }
 }
