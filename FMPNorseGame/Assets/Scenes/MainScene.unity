@@ -2277,14 +2277,17 @@ MonoBehaviour:
   TheBoss: {fileID: 0}
   DistanceToBoss: 0
   InitialDistance: 0
+  DistanceToPoint: 0
   StrengthMult: 0
   SpeedMult: 0
   HealthMult: 0
   CoinMult: 0
   damage: 0
-  point1: {x: 0, y: 0, z: 0}
-  point2: {x: 0, y: 0, z: 0}
-  point3: {x: 0, y: 0, z: 0}
+  point: 0
+  point2: 0
+  point3: 0
+  pointCounter: 0
+  DivideBy: 0
 --- !u!195 &643272243
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3027,14 +3030,17 @@ MonoBehaviour:
   TheBoss: {fileID: 0}
   DistanceToBoss: 0
   InitialDistance: 0
+  DistanceToPoint: 0
   StrengthMult: 0
   SpeedMult: 0
   HealthMult: 0
   CoinMult: 0
   damage: 0
-  point1: {x: 0, y: 0, z: 0}
-  point2: {x: 0, y: 0, z: 0}
-  point3: {x: 0, y: 0, z: 0}
+  point: 0
+  point2: 0
+  point3: 0
+  pointCounter: 0
+  DivideBy: 0
 --- !u!195 &782910448
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3983,14 +3989,17 @@ MonoBehaviour:
   TheBoss: {fileID: 0}
   DistanceToBoss: 0
   InitialDistance: 0
+  DistanceToPoint: 0
   StrengthMult: 0
   SpeedMult: 0
   HealthMult: 0
   CoinMult: 0
   damage: 0
-  point1: {x: 0, y: 0, z: 0}
-  point2: {x: 0, y: 0, z: 0}
-  point3: {x: 0, y: 0, z: 0}
+  point: 0
+  point2: 0
+  point3: 0
+  pointCounter: 0
+  DivideBy: 0
 --- !u!195 &1085456524
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5352,14 +5361,17 @@ MonoBehaviour:
   TheBoss: {fileID: 0}
   DistanceToBoss: 0
   InitialDistance: 0
+  DistanceToPoint: 0
   StrengthMult: 0
   SpeedMult: 0
   HealthMult: 0
   CoinMult: 0
   damage: 0
-  point1: {x: 0, y: 0, z: 0}
-  point2: {x: 0, y: 0, z: 0}
-  point3: {x: 0, y: 0, z: 0}
+  point: 0
+  point2: 0
+  point3: 0
+  pointCounter: 0
+  DivideBy: 0
 --- !u!195 &1546687585
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7354,14 +7366,17 @@ MonoBehaviour:
   TheBoss: {fileID: 0}
   DistanceToBoss: 0
   InitialDistance: 0
+  DistanceToPoint: 0
   StrengthMult: 0
   SpeedMult: 0
   HealthMult: 0
   CoinMult: 0
   damage: 0
-  point1: {x: 0, y: 0, z: 0}
-  point2: {x: 0, y: 0, z: 0}
-  point3: {x: 0, y: 0, z: 0}
+  point: 0
+  point2: 0
+  point3: 0
+  pointCounter: 0
+  DivideBy: 0
 --- !u!195 &1983627259
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8086,14 +8101,17 @@ MonoBehaviour:
   TheBoss: {fileID: 0}
   DistanceToBoss: 0
   InitialDistance: 0
+  DistanceToPoint: 0
   StrengthMult: 0
   SpeedMult: 0
   HealthMult: 0
   CoinMult: 0
   damage: 0
-  point1: {x: 0, y: 0, z: 0}
-  point2: {x: 0, y: 0, z: 0}
-  point3: {x: 0, y: 0, z: 0}
+  point: 0
+  point2: 0
+  point3: 0
+  pointCounter: 0
+  DivideBy: 0
 --- !u!195 &2129403025
 NavMeshAgent:
   m_ObjectHideFlags: 0

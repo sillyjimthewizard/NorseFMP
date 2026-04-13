@@ -8,6 +8,7 @@ TagManager:
   - NavMesh
   - SpawnPoints
   - TheBoss
+  - Unit
   layers:
   - Default
   - TransparentFX

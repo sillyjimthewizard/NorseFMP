@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
 
    
 
-    public static GameManager Instance;
+    //public static GameManager Instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        Instance = this;
+       // Instance = this;
         //SetTickTime = TickTimer;
         SetSpawns();
     }
@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
         }
 
         SpawnEnemy();
+
+
 
         
     }

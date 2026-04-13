@@ -20,6 +20,7 @@ public class _GameManager : MonoBehaviour
     [SerializeField] private float coinMultiplier;
     [SerializeField] private float strengthMultiplier;
     [SerializeField] private int spawnRate;
+    public int ScanNum;
     public float Currency;
 
     [Header("Tick Variables")]
@@ -48,6 +49,7 @@ public class _GameManager : MonoBehaviour
         {
             TickTimer = SetTickTime;
             SpawnCounter++;
+            ScanNum++;
             SpawnUnit();
 
         }

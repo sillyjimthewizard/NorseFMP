@@ -16,6 +16,7 @@ public class GodManager : MonoBehaviour
     RaycastHit hit;
     public LayerMask LayerMask;
     public Camera Camera;
+    public float Clamp;
     //public string GodName;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,7 +42,7 @@ public class GodManager : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, LayerMask))
             {
                 Vector3 mousePos = hit.point;
-                if (NavMesh.SamplePosition(mousePos, out surface, 2.0f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(mousePos, out surface, Clamp, NavMesh.AllAreas))
                 {}
 
                 else { CurrentGod.transform.position = mousePos; }
@@ -51,6 +52,7 @@ public class GodManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 GodPlacement = false;
+                CurrentGod.transform.position = new Vector3(CurrentGod.transform.position.x, CurrentGod.transform.position.y + 0.5f, CurrentGod.transform.position.z);
                 CurrentGod = null;
 
             }
