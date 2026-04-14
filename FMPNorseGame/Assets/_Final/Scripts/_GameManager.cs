@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class _GameManager : MonoBehaviour
@@ -81,6 +82,10 @@ public class _GameManager : MonoBehaviour
         UpgradeIntValue(1, SpawnPointStart);
     }
 
+    public TMP_Text CurrencyText;
+
+
+
     #region SpawnSystem
 
     [Header("SpawnSystem")]
@@ -103,9 +108,9 @@ public class _GameManager : MonoBehaviour
         {
             Debug.Log("Spawning");
 
-            for (int i = 0; i < SpawnPointStart ; i++)
+            for (int i = 0; i < SpawnPointStart; i++)
             {
-                
+
                 Instantiate(Unit, SpawnPoints[SpawnPointNum].gameObject.transform);
                 //i++;
                 SpawnPointNum++;
@@ -113,19 +118,30 @@ public class _GameManager : MonoBehaviour
             }
             SpawnCounter = 0;
             SpawnPointNum = 0;
-            
+
 
         }
     }
+
+    #endregion
+
+
+    #region UI
+
+    private void Start()
+    {
+        CurrencyText = GameObject.Find("CurrencyText").GetComponent<TMP_Text>();
+    }
+    private void Update()
+    {
+        CurrencyText.text = (_GameManager.Instance.Currency.ToString("F1"));
+    }
+
+    #endregion
+
+
 }
-    #endregion 
 
-
-
-
-
-
-   
 
 
 

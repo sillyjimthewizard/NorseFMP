@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoints
   - TheBoss
   - Unit
+  - Hazard
   layers:
   - Default
   - TransparentFX

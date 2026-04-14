@@ -157,8 +157,8 @@ MonoBehaviour:
   HealthMult: 0
   CoinMult: 1.25
   damage: 2
+  DivideBy: 0
   point: 0
   point2: 0
   point3: 0
   pointCounter: 0
-  DivideBy: 0

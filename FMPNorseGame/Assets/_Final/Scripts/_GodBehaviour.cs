@@ -9,25 +9,12 @@ public class _GodBehaviour : MonoBehaviour
     public Transform Target;
     public string UnitTag = "Unit";
     public Transform ThisTransform;
+    public bool UnitUpgraded;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    // public void FixedUpdate()
-    // {
-    //     if (_GameManager.Instance.ScanNum >= 1)
-    //     {
-    //
-    //     }
-    // }
-    //
-    // // Update is called once per frame
-    // public void ScanForUnits()
-    // {
-    //     Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, Range);
-    //     foreach (var hitCollider in hitColliders)
-    //     {
-    //         transform.LookAt(hitCollider.transform.position);
-    //     }
-    // }
+    [Header("Upgrade Active")]
+    public float UpgradeAmount;
+    public EnemyAi UnitScript;
+    
 
     private void Start()
     {
@@ -37,6 +24,7 @@ public class _GodBehaviour : MonoBehaviour
 
     public void UpdateTarget()
     {
+        
         GameObject[] units = GameObject.FindGameObjectsWithTag(UnitTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
@@ -48,18 +36,27 @@ public class _GodBehaviour : MonoBehaviour
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = unit;
+                //sets up how it finds the target
             }
+
         }
 
         if (nearestEnemy != null && shortestDistance <= Range)
         {
             Target = nearestEnemy.transform;
-            Invoke("removetag", 1f);
-            
+            UnitScript = Target.GetComponent<EnemyAi>();
+            //ChangeAStat();
+            if (UnitScript.LastUpgrade != this.gameObject.name)
+            {
+                Invoke("ChangeAStat", 1f);
+            }
+           
+            //what to do when there is a target 
         }
         else
         {
             Target = null;
+            
         }
 
     }
@@ -73,22 +70,66 @@ public class _GodBehaviour : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = lookRotation.eulerAngles;
         this.transform.rotation = Quaternion.Euler (0f, rotation.y, 0f);
+        // Handles Rotation By turning it based on where the Unit Is
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, Range);
+        Gizmos.DrawWireSphere(transform.position, Range); // Shows Range When Clicked
     }
 
-    void removetag()
+   
+
+    void ChangeAStat()
     {
         if (Target == null)
             return;
         else
         {
-            Target.tag = "Untagged";
+            WhichStat();
+            //Target.tag = "Untagged"; // Makes it untarget the unit
         }
-           
+    }
+
+    void WhichStat()
+    {
+        
+        if (this.gameObject.name == "Thor")
+        {
+            UnitScript.StrengthMult += UpgradeAmount;
+            UnitScript.LastUpgrade = "Thor";
+        }
+
+        if (this.gameObject.name == "NotThor")
+        {
+            UnitScript.CoinMult *= UpgradeAmount;
+            UnitScript.LastUpgrade = "NotThor";
+        }
+
+        if (this.gameObject.name == "AlsoNotThor")
+        {
+            UnitScript.HazardImmune = true;
+            UnitScript.LastUpgrade = "AlsoNotThor";
+        }
+
     }
 }
+// Start is called once before the first execution of Update after the MonoBehaviour is created
+// public void FixedUpdate()
+// {
+//     if (_GameManager.Instance.ScanNum >= 1)
+//     {
+//
+//     }
+// }
+//
+// // Update is called once per frame
+// public void ScanForUnits()
+// {
+//     Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, Range);
+//     foreach (var hitCollider in hitColliders)
+//     {
+//         transform.LookAt(hitCollider.transform.position);
+//     }
+// }

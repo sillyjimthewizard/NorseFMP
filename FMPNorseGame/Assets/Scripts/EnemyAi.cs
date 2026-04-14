@@ -20,10 +20,14 @@ public class EnemyAi : MonoBehaviour
     public float HealthMult;
     public float CoinMult;
     public float damage;
+    public string LastUpgrade;
+    public bool HazardImmune;
 
+    [Header("Movement")]
+    public float DivideBy;
     public float point, point2, point3;
     public int pointCounter;
-    public float DivideBy;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -78,6 +82,18 @@ public class EnemyAi : MonoBehaviour
         else
         {
             agent.SetDestination(TheBoss.transform.position);
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Hazard"))
+        {
+            Debug.Log("Hit");
+            if (HazardImmune == false)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

@@ -53,6 +53,7 @@ public class GodManager : MonoBehaviour
             {
                 GodPlacement = false;
                 CurrentGod.transform.position = new Vector3(CurrentGod.transform.position.x, CurrentGod.transform.position.y + 0.5f, CurrentGod.transform.position.z);
+                CurrentGod.name = GodPrefab.name;
                 CurrentGod = null;
 
             }
