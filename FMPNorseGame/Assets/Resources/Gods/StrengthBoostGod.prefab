@@ -139,3 +139,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b867a52e37fafa49a431f05dd22b330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Range: 0
+  HasScanned: 0
+  Target: {fileID: 0}
+  UnitTag: Unit
+  ThisTransform: {fileID: 0}
+  UnitUpgraded: 0
+  UpgradeAmount: 0
+  UnitScript: {fileID: 0}
+  GodUnlockNum: 7

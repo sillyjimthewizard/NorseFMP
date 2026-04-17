@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6238742827057130260}
   m_Layer: 3
   m_Name: Thor
-  m_TagString: Untagged
+  m_TagString: Thor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a164c2c43149f746b91ecb636fd3d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodUi: {fileID: 9166087187763879427, guid: 3a80ea59f72d33c45b3f57370a047cac, type: 3}
+  GodUi: {fileID: 9166087187763879427, guid: 7feba15d910296643aa48d9e08a638af, type: 3}
   SpawnedGodUI: {fileID: 0}
   GodUiSpawned: 0
 --- !u!114 &6238742827057130260
@@ -254,3 +254,5 @@ MonoBehaviour:
   UnitUpgraded: 0
   UpgradeAmount: 2
   UnitScript: {fileID: 0}
+  GodUnlockNum: 0
+  FireRate: 0

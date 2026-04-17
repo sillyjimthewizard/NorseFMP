@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 1359174841383017903}
   m_Layer: 3
   m_Name: NotThor
-  m_TagString: Untagged
+  m_TagString: God1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a164c2c43149f746b91ecb636fd3d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodUi: {fileID: 9166087187763879427, guid: 3a80ea59f72d33c45b3f57370a047cac, type: 3}
+  GodUi: {fileID: 9166087187763879427, guid: 1e25d698523b77446b1dcf5459f18c65, type: 3}
   SpawnedGodUI: {fileID: 0}
   GodUiSpawned: 0
 --- !u!114 &1359174841383017903
@@ -254,3 +254,5 @@ MonoBehaviour:
   UnitUpgraded: 0
   UpgradeAmount: 2
   UnitScript: {fileID: 0}
+  GodUnlockNum: 1
+  FireRate: 0

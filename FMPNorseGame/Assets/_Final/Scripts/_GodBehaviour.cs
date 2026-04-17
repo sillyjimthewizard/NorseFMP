@@ -14,13 +14,15 @@ public class _GodBehaviour : MonoBehaviour
     [Header("Upgrade Active")]
     public float UpgradeAmount;
     public EnemyAi UnitScript;
-    public bool GodUnlocked;
+    public int GodUnlockNum;
+    public float FireRate;
     
 
     private void Start()
     {
-        InvokeRepeating("UpdateTarget",0f,0.5f);
+        InvokeRepeating("UpdateTarget",0f, 0.2f);
         ThisTransform = this.transform;
+        FireRate = 2;
     }
 
     public void UpdateTarget()
@@ -49,7 +51,7 @@ public class _GodBehaviour : MonoBehaviour
             //ChangeAStat();
             if (UnitScript.LastUpgrade != this.gameObject.name)
             {
-                Invoke("ChangeAStat", 1f);
+                Invoke("ChangeAStat", FireRate);
             }
            
             //what to do when there is a target 
@@ -84,6 +86,7 @@ public class _GodBehaviour : MonoBehaviour
 
     void ChangeAStat()
     {
+        Debug.Log("Unit Upgraded");
         if (Target == null)
             return;
         else

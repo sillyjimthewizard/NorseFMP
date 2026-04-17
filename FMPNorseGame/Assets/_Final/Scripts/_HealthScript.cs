@@ -42,7 +42,8 @@ public class _HealthScript : MonoBehaviour
         {
             if (isBoss)
             {
-                Destroy(this.gameObject);
+                _GameManager.Instance.BossStage++;
+                SetHp();
             }
             else
             {

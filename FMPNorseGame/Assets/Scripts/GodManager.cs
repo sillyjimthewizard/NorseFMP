@@ -16,8 +16,9 @@ public class GodManager : MonoBehaviour
     RaycastHit hit;
     public LayerMask LayerMask;
     public Camera Camera;
-    public float Clamp;
+    public float PlacementClamp;
     //public string GodName;
+
 
     public bool GodPlaced;
 
@@ -45,7 +46,7 @@ public class GodManager : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, LayerMask))
             {
                 Vector3 mousePos = hit.point;
-                if (NavMesh.SamplePosition(mousePos, out surface, Clamp, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(mousePos, out surface, PlacementClamp, NavMesh.AllAreas))
                 {}
 
                 else { CurrentGod.transform.position = mousePos; }
@@ -59,7 +60,7 @@ public class GodManager : MonoBehaviour
                 CurrentGod.name = GodPrefab.name;
                 CurrentGod = null;
                 hit.transform.gameObject.layer = default;
-                GodPlaced = true;
+                //GodPlaced = true;
 
             }
 
@@ -67,32 +68,60 @@ public class GodManager : MonoBehaviour
 
     }
 
- 
-
-
-    public void GodPlacementSetup(string GodName)
+    public void GetGod(string GodNumber)
     {
-        if (GodPlaced == false)
+        
+        if (GodNumber == "0")
         {
-            // GodName = Button.gameObject.name;
-            GodPrefab = Resources.Load<GameObject>("Gods/" + GodName);
-            GodPrefab.GetComponent<_GodBehaviour>().;
+           GameObject[] NullCheck = GameObject.FindGameObjectsWithTag("Thor");
+            int NumberOfThor = NullCheck.Length;
+            if (NumberOfThor == 0)
+            {
+                GodSelection("Thor");
+            }
+            else
+            {}
+            
+        }
+        else if (GodNumber == "1") 
+        {
+            GameObject[] NullCheck = GameObject.FindGameObjectsWithTag("God1");
+            int NumberOfThor = NullCheck.Length;
+            if (NumberOfThor == 0)
+            {
+                GodSelection("NotThor");
+            }
+            else
+            { }
+            
+        }
+        else if (GodNumber == "2")
+        {
+            GameObject[] NullCheck = GameObject.FindGameObjectsWithTag("God2");
+            int NumberOfThor = NullCheck.Length;
+            if (NumberOfThor == 0)
+            {
+                GodSelection("AlsoNotThor");
+            }
+            else
+            { }
+        }
+        else if (GodNumber == "7")
+        {
+            GodSelection("SpawnRateGod");
+        }
+    }
+
+    public void GodSelection(string GodName)
+    {
+        GodPrefab = Resources.Load<GameObject>("Gods/" + GodName);
+        if (_GameManager.Instance.BossStage >= GodPrefab.GetComponent<_GodBehaviour>().GodUnlockNum)
+        {
+            //GodPrefab.GetComponent<_GodBehaviour>().;
             Debug.Log(GodName);
             CurrentGod = Instantiate(GodPrefab);
             GodPlacement = true;
         }
     }
-
-
-    public void GetGod(string GodNumber)
-    {
-        if (GodNumber == "0")
-        {
-            Debug.Log("God 1");
-        }
-        else if (GodNumber == "1") 
-        {
-            Debug.Log("God 2");             
-        }
-    }
 }
+

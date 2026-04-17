@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5457030316696623947}
   m_Layer: 3
   m_Name: AlsoNotThor
-  m_TagString: Untagged
+  m_TagString: God2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a164c2c43149f746b91ecb636fd3d52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodUi: {fileID: 9166087187763879427, guid: 3a80ea59f72d33c45b3f57370a047cac, type: 3}
+  GodUi: {fileID: 9166087187763879427, guid: 8089dbbb4dae4e84383c335feeea061f, type: 3}
   SpawnedGodUI: {fileID: 0}
   GodUiSpawned: 0
 --- !u!114 &5457030316696623947
@@ -146,6 +146,8 @@ MonoBehaviour:
   UnitUpgraded: 0
   UpgradeAmount: 2
   UnitScript: {fileID: 0}
+  GodUnlockNum: 2
+  FireRate: 0
 --- !u!1 &8860812477908309759
 GameObject:
   m_ObjectHideFlags: 0

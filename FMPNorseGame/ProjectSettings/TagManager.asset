@@ -10,6 +10,9 @@ TagManager:
   - TheBoss
   - Unit
   - Hazard
+  - Thor
+  - God1
+  - God2
   layers:
   - Default
   - TransparentFX

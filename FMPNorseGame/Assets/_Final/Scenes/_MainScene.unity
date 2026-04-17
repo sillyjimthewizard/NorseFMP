@@ -975,14 +975,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 361190770}
         m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
-        m_MethodName: GodPlacementSetup
+        m_MethodName: GetGod
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: NotThor
+          m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &300621817
@@ -1367,7 +1367,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Camera: {fileID: 5932011836467076808}
-  Clamp: 1
+  PlacementClamp: 0
+  GodPlaced: 0
 --- !u!1 &362769916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,7 +1451,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 123655838}
   m_HandleRect: {fileID: 123655837}
   m_Direction: 3
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1741,26 +1742,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 361190770}
         m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
-        m_MethodName: GodPlacementSetup
+        m_MethodName: GetGod
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Thor
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &435835478
@@ -2074,7 +2063,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8ad30ac8c286d9c4bbcba4fff4f69958, type: 2}
     - target: {fileID: 919132149155446097, guid: 0b81da101bafeed4f8c0651245b05d16, type: 3}
       propertyPath: m_Name
-      value: NorseGameassets
+      value: MilkHazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0b81da101bafeed4f8c0651245b05d16, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b81da101bafeed4f8c0651245b05d16, type: 3}
       propertyPath: m_TagString
@@ -2744,14 +2737,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 361190770}
         m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
-        m_MethodName: GodPlacementSetup
+        m_MethodName: GetGod
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SpawnRateGod
+          m_StringArgument: 7
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &803919092
@@ -2877,14 +2870,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 361190770}
         m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
-        m_MethodName: GodPlacementSetup
+        m_MethodName: GetGod
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: AlsoNotThor
+          m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &870551810
@@ -3046,11 +3039,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36e4c9d34767d944ac34827f8299ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
+  isBoss: 1
   CurrentStats: {fileID: 11400000, guid: e66381901c905c14e9519d80bc2e43e8, type: 2}
   BossStats:
   - {fileID: 11400000, guid: e66381901c905c14e9519d80bc2e43e8, type: 2}
-  Health: 1000
+  - {fileID: 11400000, guid: 6190c7fd4db3d3e41882766c5eac72a9, type: 2}
+  Health: 1
 --- !u!1 &939882757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6532201046043209883, guid: 1ffc73e3b6df20345a471734f0fd9c36, type: 3}
@@ -3165,7 +3159,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 950607011}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 361190770}
+        m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
+        m_MethodName: GetGod
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &950607011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3422,7 +3428,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1031512551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 361190770}
+        m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
+        m_MethodName: GetGod
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 6
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1031512551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3883,7 +3901,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1256364236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 361190770}
+        m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
+        m_MethodName: GetGod
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 5
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1256364236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6065,7 +6095,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1848670529}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 361190770}
+        m_TargetAssemblyTypeName: GodManager, Assembly-CSharp
+        m_MethodName: GetGod
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1848670529
 MonoBehaviour:
   m_ObjectHideFlags: 0
