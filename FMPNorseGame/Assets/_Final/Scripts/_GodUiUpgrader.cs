@@ -45,7 +45,7 @@ public class _GodUiUpgrader : MonoBehaviour
             }
 
         }
-
+        
 
     }
     public void UpgradeSpawnPoints()

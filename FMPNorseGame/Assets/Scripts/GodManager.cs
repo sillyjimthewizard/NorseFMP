@@ -19,6 +19,9 @@ public class GodManager : MonoBehaviour
     public float Clamp;
     //public string GodName;
 
+    public bool GodPlaced;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -55,6 +58,8 @@ public class GodManager : MonoBehaviour
                 CurrentGod.transform.position = new Vector3(CurrentGod.transform.position.x, CurrentGod.transform.position.y + 0.5f, CurrentGod.transform.position.z);
                 CurrentGod.name = GodPrefab.name;
                 CurrentGod = null;
+                hit.transform.gameObject.layer = default;
+                GodPlaced = true;
 
             }
 
@@ -67,13 +72,15 @@ public class GodManager : MonoBehaviour
 
     public void GodPlacementSetup(string GodName)
     {
-        
-       // GodName = Button.gameObject.name;
-        GodPrefab = Resources.Load<GameObject>("Gods/" + GodName);
-        Debug.Log(GodName);
-        CurrentGod = Instantiate(GodPrefab);
-        GodPlacement = true; 
-
+        if (GodPlaced == false)
+        {
+            // GodName = Button.gameObject.name;
+            GodPrefab = Resources.Load<GameObject>("Gods/" + GodName);
+            GodPrefab.GetComponent<_GodBehaviour>().;
+            Debug.Log(GodName);
+            CurrentGod = Instantiate(GodPrefab);
+            GodPlacement = true;
+        }
     }
 
 

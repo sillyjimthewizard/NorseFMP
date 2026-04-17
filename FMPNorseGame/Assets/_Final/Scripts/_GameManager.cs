@@ -126,7 +126,7 @@ public class _GameManager : MonoBehaviour
     #endregion
 
 
-    #region UI
+    #region UI and Boss
 
     private void Start()
     {
@@ -135,9 +135,15 @@ public class _GameManager : MonoBehaviour
     private void Update()
     {
         CurrencyText.text = (_GameManager.Instance.Currency.ToString("F1"));
+
+        
     }
 
     #endregion
+
+
+
+
 
 
 }

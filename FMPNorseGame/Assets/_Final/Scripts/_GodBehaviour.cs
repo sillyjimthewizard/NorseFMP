@@ -14,6 +14,7 @@ public class _GodBehaviour : MonoBehaviour
     [Header("Upgrade Active")]
     public float UpgradeAmount;
     public EnemyAi UnitScript;
+    public bool GodUnlocked;
     
 
     private void Start()
