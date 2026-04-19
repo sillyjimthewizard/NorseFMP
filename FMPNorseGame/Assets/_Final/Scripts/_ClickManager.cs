@@ -18,17 +18,16 @@ public class _ClickManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        
+     
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-       
         if (GodUiSpawned == false)
         {
             SpawnedGodUI = Instantiate(GodUi, new Vector3(this.transform.position.x, this.transform.position.y + 3, this.transform.position.z), Quaternion.identity, this.transform);
@@ -36,8 +35,9 @@ public class _ClickManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         }
         if (GodUiSpawned == true)
         {
-            GodUi.SetActive(true);
+            SpawnedGodUI.SetActive(true);
         }
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -47,11 +47,9 @@ public class _ClickManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        
-
         if (GodUiSpawned == true)
         {
-            GodUi.SetActive(false);
+            SpawnedGodUI.SetActive(false);
         }
     }
 }
