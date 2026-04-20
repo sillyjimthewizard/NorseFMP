@@ -5623,6 +5623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1720208427}
+  - component: {fileID: 1720208428}
   m_Layer: 0
   m_Name: FFXManager
   m_TagString: Untagged
@@ -5645,6 +5646,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1666098579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1720208428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720208426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a11eafd7707fa44090ca5ee964a54d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: {fileID: 0}
+  TestParticle: {fileID: 0}
 --- !u!1001 &1720915946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7731,6 +7746,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2969470424207879424, guid: dce4392ca4483764b8a8b9dc9d3e8868, type: 3}
+      propertyPath: Lens.FarClipPlane
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4252753202003214331, guid: dce4392ca4483764b8a8b9dc9d3e8868, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.18999958
@@ -7802,6 +7821,10 @@ PrefabInstance:
     - target: {fileID: 8556358194659910868, guid: dce4392ca4483764b8a8b9dc9d3e8868, type: 3}
       propertyPath: m_LocalPosition.z
       value: 12.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200425398732978554, guid: dce4392ca4483764b8a8b9dc9d3e8868, type: 3}
+      propertyPath: far clip plane
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
