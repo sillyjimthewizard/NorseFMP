@@ -60,6 +60,7 @@ public class EnemyAi : MonoBehaviour
         {
             damage = damage * StrengthMult;
             _GameManager.Instance.TakeDamage(damage, TheBoss);
+            _SoundManager.instance.PlayParticle(DeathEffect, this.transform.position, 1f);
             Destroy(this.gameObject);
         }
 
@@ -77,7 +78,7 @@ public class EnemyAi : MonoBehaviour
 
         _GameManager.Instance.Currency += CoinCount * CoinMult;
         //_SoundManager.instance.PlaySound(DeathSound);
-        _SoundManager.instance.PlayParticle(DeathEffect, this.transform.position, 1f);
+        
     }
 
 
