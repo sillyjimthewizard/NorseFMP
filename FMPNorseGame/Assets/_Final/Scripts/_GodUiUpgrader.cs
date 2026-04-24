@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class _GodUiUpgrader : MonoBehaviour
@@ -17,7 +18,7 @@ public class _GodUiUpgrader : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cameraTransform = Camera.main.transform;
+        cameraTransform = GameObject.Find("CinemachineCamera").transform;
         gameManager = GameObject.Find("GameManager").GetComponent<_GameManager>(); 
     }
 

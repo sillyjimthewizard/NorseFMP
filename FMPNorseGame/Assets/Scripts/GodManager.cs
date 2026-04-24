@@ -35,6 +35,7 @@ public class GodManager : MonoBehaviour
 
         if (GodPlacement ==  true)
         {
+
             //
             ////ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             //if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, LayerMask))
@@ -59,10 +60,18 @@ public class GodManager : MonoBehaviour
                 CurrentGod.transform.position = new Vector3(CurrentGod.transform.position.x, CurrentGod.transform.position.y + 0.5f, CurrentGod.transform.position.z);
                 CurrentGod.name = GodPrefab.name;
                 CurrentGod = null;
-                hit.transform.gameObject.layer = default;
-                //GodPlaced = true;
+
+
+                if (hit.transform != null)
+                {
+                    hit.transform.gameObject.layer = 0;
+                }
+
+               //GodPlaced = true;
 
             }
+
+          
 
         }
 
@@ -121,6 +130,7 @@ public class GodManager : MonoBehaviour
             Debug.Log(GodName);
             CurrentGod = Instantiate(GodPrefab);
             GodPlacement = true;
+            GodPlaced = false;
         }
     }
 }

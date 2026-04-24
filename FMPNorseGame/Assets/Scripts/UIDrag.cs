@@ -93,16 +93,16 @@ public class UIDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
-            CameraController.instance.Inputcontroller.enabled = false;
-            CameraController.instance.CanZoom = false;
+            _CameraManager.Instance.CanCam = false;
+            
 
         }
         if (CursorState == false)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            CameraController.instance.Inputcontroller.enabled = true;
-            CameraController.instance.CanZoom = true;
+            _CameraManager.Instance.CanCam = true;
+            
 
         }
     }

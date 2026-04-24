@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class _HealthScript : MonoBehaviour
 {
@@ -7,6 +9,10 @@ public class _HealthScript : MonoBehaviour
 
     public ScriptableObject CurrentStats;
     public ScriptableObject[] BossStats;
+    public BossDataMaker BossData;
+
+    [SerializeField] private Image HealthSprite;
+    [SerializeField] private TextMeshProUGUI HealthText;
 
     [Header("Floats")]
     public float Health;
@@ -18,10 +24,9 @@ public class _HealthScript : MonoBehaviour
     {
         if (isBoss)
         {
-            BossDataMaker tempBossdata;
             CurrentStats = BossStats[_GameManager.Instance.BossStage];
-            tempBossdata = (BossDataMaker)CurrentStats;
-            Health = tempBossdata.BossHp;
+            BossData = (BossDataMaker)CurrentStats;
+            Health = BossData.BossHp;
         }
         else
         {
@@ -51,9 +56,15 @@ public class _HealthScript : MonoBehaviour
             }
 
         }
+
+        UpdateHealthBar(BossData.BossHp, Health);
     }
 
-
+    public void UpdateHealthBar(float maxhealth, float currenthealth)
+    {
+        HealthSprite.fillAmount = currenthealth / maxhealth;
+        HealthText.text = currenthealth.ToString() + "/" + maxhealth.ToString();
+    }
 
 
 }
