@@ -8,7 +8,7 @@ public class EnemyAi : MonoBehaviour
     public NavMeshAgent agent;
     public Vector3 moveTo;
     public GameObject TheBoss;
-    
+
 
     public float DistanceToBoss;
     public float InitialDistance;
@@ -45,7 +45,7 @@ public class EnemyAi : MonoBehaviour
         DistanceToBoss = Vector3.Distance(this.transform.position, TheBoss.transform.position);
         InitialDistance = DistanceToBoss;
         CalculateDistance();
-        _SoundManager.instance.PlayParticle(SpawnEffect,this.transform.position, 1f);
+        _SoundManager.instance.PlayParticle(SpawnEffect, this.transform.position, 1f);
         thephysics = GetComponentsInChildren<Rigidbody>();
         deactivateRagdoll();
     }
@@ -64,8 +64,8 @@ public class EnemyAi : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        DistanceToPoint = Vector3.Distance(this.transform.position, new Vector3 (point, moveTo.y, moveTo.z));
-        if (DistanceToPoint <= 1)
+        DistanceToPoint = Vector3.Distance(this.transform.position, new Vector3(point, moveTo.y, moveTo.z));
+        if (DistanceToPoint <= 2)
         {
             pointCounter++;
             CalculateDistance();
@@ -78,7 +78,7 @@ public class EnemyAi : MonoBehaviour
 
         _GameManager.Instance.Currency += CoinCount * CoinMult;
         //_SoundManager.instance.PlaySound(DeathSound);
-        
+
     }
 
 
@@ -88,9 +88,8 @@ public class EnemyAi : MonoBehaviour
         {
             DivideBy += 0.3f;
 
-            point = TheBoss.transform.position.x * DivideBy;
-            float Additive = Random.Range(-5, 5);
-            moveTo = new Vector3(point, TheBoss.transform.position.y, TheBoss.transform.position.z + Additive);
+            CheckValid();
+            
             //point2 = TheBoss.transform.position.x * 0.6f;
             //point3 = TheBoss.transform.position.x * 0.9f;
             agent.SetDestination(moveTo);
@@ -123,4 +122,22 @@ public class EnemyAi : MonoBehaviour
             agent.enabled = true;
         }
     }
+
+    public void CheckValid()
+    {
+        point = TheBoss.transform.position.x * DivideBy;
+        NavMeshHit hit;
+        float Additive = Random.Range(-22, 55);
+        Vector3 Pointcheck = new Vector3(point, TheBoss.transform.position.y, TheBoss.transform.position.z + Additive);
+        if (NavMesh.SamplePosition(Pointcheck, out hit, 1.0f, NavMesh.AllAreas))
+        {
+            
+            moveTo = new Vector3(point, TheBoss.transform.position.y, TheBoss.transform.position.z + Additive);
+        }
+
+        else { CheckValid(); }
+    }
+      
+
+
 }

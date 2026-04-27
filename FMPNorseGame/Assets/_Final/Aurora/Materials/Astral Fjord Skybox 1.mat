@@ -206,9 +206,9 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - _AuroraColorHigh: {r: 1.8614798, g: 2, b: 0, a: 1}
-    - _AuroraColorLow: {r: 0.0037131489, g: 0, b: 0.1981132, a: 1}
-    - _AuroraColorMid: {r: 0, g: 0.95942676, b: 31.999996, a: 1}
+    - _AuroraColorHigh: {r: 2.670157, g: 0.028171359, b: 0, a: 1}
+    - _AuroraColorLow: {r: 0.2, g: 0.002043121, b: 0, a: 1}
+    - _AuroraColorMid: {r: 0.83769625, g: 0, b: 0.028821688, a: 1}
     - _AuroraTiltAxis: {r: 1, g: 0, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BottomColor: {r: 0.29999998, g: 0.29999998, b: 1, a: 1}
@@ -218,9 +218,9 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0, g: 0.60784316, b: 0.4745098, a: 1}
     - _MiddleColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SkyBottom: {r: 0, g: 0.028301895, b: 0.022093736, a: 1}
+    - _SkyBottom: {r: 0.13207549, g: 0.0069155535, b: 0.0018689893, a: 1}
     - _SkyTint: {r: 0, g: 0.15294118, b: 0.18431373, a: 1}
-    - _SkyTop: {r: 0.0627451, g: 0.21436355, b: 0.5176471, a: 1}
+    - _SkyTop: {r: 0.5176471, g: 0.10399234, b: 0.0627451, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _StarColor: {r: 30.439676, g: 0.27539936, b: 0, a: 1}
     - _Tint: {r: 0.04481131, g: 0.5, b: 0.11862272, a: 0.5}
