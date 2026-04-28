@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Splines;
+
 
 public class EnemyAi : MonoBehaviour
 {
@@ -37,9 +37,10 @@ public class EnemyAi : MonoBehaviour
     Rigidbody[] thephysics;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         //_SoundManager.instance.PlaySound(SpawnSound);
+        DivideBy += 0.3f;
         agent = GetComponent<NavMeshAgent>();
         TheBoss = GameObject.Find("TheBoss");
         DistanceToBoss = Vector3.Distance(this.transform.position, TheBoss.transform.position);
@@ -63,11 +64,12 @@ public class EnemyAi : MonoBehaviour
             _SoundManager.instance.PlayParticle(DeathEffect, this.transform.position, 1f);
             Destroy(this.gameObject);
         }
-
         DistanceToPoint = Vector3.Distance(this.transform.position, new Vector3(point, moveTo.y, moveTo.z));
-        if (DistanceToPoint <= 2)
+                                                      // Istvan here. Why is this ^^ point?
+        if (DistanceToPoint <= 2) // Istvan? Did you mean less than?
         {
             pointCounter++;
+            DivideBy += 0.3f;
             CalculateDistance();
         }
     }
@@ -86,8 +88,6 @@ public class EnemyAi : MonoBehaviour
     {
         if (pointCounter <= 2)
         {
-            DivideBy += 0.3f;
-
             CheckValid();
             
             //point2 = TheBoss.transform.position.x * 0.6f;
@@ -129,15 +129,14 @@ public class EnemyAi : MonoBehaviour
         NavMeshHit hit;
         float Additive = Random.Range(-22, 55);
         Vector3 Pointcheck = new Vector3(point, TheBoss.transform.position.y, TheBoss.transform.position.z + Additive);
-        if (NavMesh.SamplePosition(Pointcheck, out hit, 1.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(Pointcheck, out hit, 1f, 1 << NavMesh.GetAreaFromName("Walkable")))
         {
-            
-            moveTo = new Vector3(point, TheBoss.transform.position.y, TheBoss.transform.position.z + Additive);
+            Debug.Log("Valid");
+            moveTo = Pointcheck;
         }
 
-        else { CheckValid(); }
+        
+        // else { Debug.Log("NotValid"); }
     }
-      
-
 
 }
