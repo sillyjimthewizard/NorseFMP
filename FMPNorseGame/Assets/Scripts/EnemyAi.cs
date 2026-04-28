@@ -129,10 +129,10 @@ public class EnemyAi : MonoBehaviour
         NavMeshHit hit;
         float Additive = Random.Range(-22, 55);
         Vector3 Pointcheck = new Vector3(point, TheBoss.transform.position.y, TheBoss.transform.position.z + Additive);
-        if (NavMesh.SamplePosition(Pointcheck, out hit, 1f, 1 << NavMesh.GetAreaFromName("Walkable")))
+        if (NavMesh.SamplePosition(Pointcheck, out hit, 100f, -1))
         {
             Debug.Log("Valid");
-            moveTo = Pointcheck;
+            moveTo = hit.position;
         }
 
         
