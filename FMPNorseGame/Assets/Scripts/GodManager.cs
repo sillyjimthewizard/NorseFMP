@@ -64,7 +64,7 @@ public class GodManager : MonoBehaviour
 
                 if (hit.transform != null)
                 {
-                    hit.transform.gameObject.layer = 0;
+                    hit.transform.gameObject.layer = 0; // was originally hit.transform.layer
                 }
 
                //GodPlaced = true;
