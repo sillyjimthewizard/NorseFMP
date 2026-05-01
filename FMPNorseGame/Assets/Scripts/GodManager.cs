@@ -17,10 +17,11 @@ public class GodManager : MonoBehaviour
     public LayerMask LayerMask;
     public Camera Camera;
     public float PlacementClamp;
+    public GameObject GodBeingPlaced;
     //public string GodName;
 
 
-    public bool GodPlaced;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,32 +49,49 @@ public class GodManager : MonoBehaviour
             {
                 Vector3 mousePos = hit.point;
                 if (NavMesh.SamplePosition(mousePos, out surface, PlacementClamp, NavMesh.AllAreas))
-                {}
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        Destroy(GodBeingPlaced);
+                    }
+
+
+                }
 
                 else { CurrentGod.transform.position = mousePos; }
 
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0)&& hit.transform != null && hit.transform.gameObject.layer == 6)
             {
                 GodPlacement = false;
                 CurrentGod.transform.position = new Vector3(CurrentGod.transform.position.x, CurrentGod.transform.position.y + 0.5f, CurrentGod.transform.position.z);
                 CurrentGod.name = GodPrefab.name;
+                GodBeingPlaced = CurrentGod;
                 CurrentGod = null;
 
 
                 if (hit.transform != null)
                 {
-                    hit.transform.gameObject.layer = 0; // was originally hit.transform.layer
+                    if (hit.transform.gameObject.layer != default)
+                    {
+                        hit.transform.gameObject.layer = 0; // was originally hit.transform.layer
+                    }
+                    if (hit.transform.gameObject.name != "podium")
+                    {
+                        
+                    }
+
+
+                    }
+
+                    //GodPlaced = true;
+
                 }
 
-               //GodPlaced = true;
+
 
             }
-
-          
-
-        }
 
     }
 
@@ -130,7 +148,7 @@ public class GodManager : MonoBehaviour
             Debug.Log(GodName);
             CurrentGod = Instantiate(GodPrefab);
             GodPlacement = true;
-            GodPlaced = false;
+            
         }
     }
 }

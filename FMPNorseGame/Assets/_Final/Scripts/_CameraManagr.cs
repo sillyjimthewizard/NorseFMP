@@ -74,23 +74,11 @@ public class _CameraManager : MonoBehaviour
 
             }
 
-            if (dragPanMoveActive == true)
-            {
-                Vector2 mouseMovementDelta = (Vector2)Input.mousePosition - LastMousePos;
-                Debug.Log(mouseMovementDelta);
-                float dragPanSpeed = 1f;
-                InputDir.x = mouseMovementDelta.x * dragPanSpeed;
-                InputDir.z = mouseMovementDelta.y * dragPanSpeed;
-                LastMousePos = Input.mousePosition;
-            }
 
             Vector3 moveDir = transform.forward * InputDir.z + transform.right * InputDir.x;
 
             float moveSpeed = 50f;
             transform.position += moveDir * moveSpeed * Time.deltaTime;
-
-
-       
 
             // rotation logic
 
@@ -105,6 +93,15 @@ public class _CameraManager : MonoBehaviour
             float rotateSpeed = 150f;
             float rotateSpeedY = 5;
 
+            if (dragPanMoveActive == true)
+            {
+                Vector2 mouseMovementDelta = (Vector2)Input.mousePosition - LastMousePos;
+                Debug.Log(mouseMovementDelta);
+                float dragPanSpeed = 0.3f;
+                //rotateDir = mouseMovementDelta.x * dragPanSpeed;
+                rotateDir = mouseMovementDelta.x * dragPanSpeed;
+                LastMousePos = Input.mousePosition;
+            }
 
             cameraFollow.FollowOffset += new Vector3(0, rotateYDir * rotateSpeedY * Time.deltaTime, 0);
 

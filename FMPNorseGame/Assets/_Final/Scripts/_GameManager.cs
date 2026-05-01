@@ -29,8 +29,9 @@ public class _GameManager : MonoBehaviour
     [SerializeField] private float SetTickTime;
     [SerializeField] private float GlobalTime;
 
-    [Header("Boss Variables")]
+    [Header("State Variables")]
     public int BossStage;
+    public int Gamestate; // 0 = main menu 1 = gameplay 
 
     public void Awake()
     {
@@ -41,18 +42,21 @@ public class _GameManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (TickTimer >= 0)
+        if (Gamestate == 1)
         {
-            TickTimer -= Time.deltaTime;
-            GlobalTime += Time.deltaTime;
-        }
-        else if (TickTimer <= 0)
-        {
-            TickTimer = SetTickTime;
-            SpawnCounter++;
-            ScanNum++;
-            SpawnUnit();
+            if (TickTimer >= 0)
+            {
+                TickTimer -= Time.deltaTime;
+                GlobalTime += Time.deltaTime;
+            }
+            else if (TickTimer <= 0)
+            {
+                TickTimer = SetTickTime;
+                SpawnCounter++;
+                ScanNum++;
+                SpawnUnit();
 
+            }
         }
     }
     public void TakeDamage(float damage, GameObject target)
@@ -82,7 +86,7 @@ public class _GameManager : MonoBehaviour
         UpgradeIntValue(1, SpawnPointStart);
     }
 
-    public TMP_Text CurrencyText;
+   
 
 
 
@@ -128,16 +132,43 @@ public class _GameManager : MonoBehaviour
 
     #region UI and Boss
 
+    public TMP_Text CurrencyText;
+    public GameObject HowToPlay;
+    public GameObject GameCam, GameCamPoint;
+    public GameObject UpgradeUI;
+
     private void Start()
     {
-        CurrencyText = GameObject.Find("CurrencyText").GetComponent<TMP_Text>();
+       // CurrencyText = GameObject.Find("CurrencyText").GetComponent<TMP_Text>();
     }
     private void Update()
     {
-        CurrencyText.text = (_GameManager.Instance.Currency.ToString("F1"));
+        CurrencyText.text = (Currency.ToString("F1"));
 
-        
     }
+
+    public void play()
+    {
+        GameObject MainMenu = GameObject.Find("MainMenu");
+        MainMenu.SetActive(false);
+        Gamestate = 1;
+        GameObject MenuCam = GameObject.Find("Menu Cam");
+        MenuCam.SetActive(false);
+        GameCamPoint.SetActive(true);
+        GameCam.SetActive(true);
+        UpgradeUI.SetActive(true);
+    }
+
+    public void HowTo()
+    {
+        HowToPlay.SetActive(true);
+    }
+
+    public void StopHowTo()
+    {
+        HowToPlay.SetActive(false);
+    
+}
 
     #endregion
 
