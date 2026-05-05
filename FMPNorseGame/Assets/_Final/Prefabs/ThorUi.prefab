@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2305161214141182099}
   - component: {fileID: 8181219945148013116}
   - component: {fileID: 4644044037140100551}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Upgrade1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 4517705388654955065}
   - component: {fileID: 8029800533450043843}
   - component: {fileID: 3746024686478044574}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Upgrade2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 8449311273157988598}
   - component: {fileID: 1870979750749129951}
   - component: {fileID: 6574143202147920216}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpgradText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 4809390205707272559}
   - component: {fileID: 7444397987011666932}
   - component: {fileID: 6912530620212246738}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpgradText (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   - component: {fileID: 5637491749777409565}
   - component: {fileID: 2194234305067560157}
   - component: {fileID: 4481434752375698844}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GodName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 2679459645448663592}
   - component: {fileID: 7266378235887022921}
   - component: {fileID: 7966457310450848316}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: WorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -930,7 +930,7 @@ GameObject:
   - component: {fileID: 3022069511206651461}
   - component: {fileID: 2066465144325206169}
   - component: {fileID: 686325122010095252}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 8692945977055644562}
   - component: {fileID: 6079702382313637775}
   - component: {fileID: 91108317012257193}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpgradText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 2422578673802574800}
   - component: {fileID: 4669824720283860338}
   - component: {fileID: 811274641208475071}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Upgrade2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2051570360448511851}
   - component: {fileID: 6518315852779578416}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ThorUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
