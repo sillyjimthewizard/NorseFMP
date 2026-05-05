@@ -47,9 +47,6 @@ public class _ClickManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (GodUiSpawned == true)
-        {
-            SpawnedGodUI.SetActive(false);
-        }
+        
     }
 }

@@ -19,7 +19,8 @@ public class UIDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
         startinglocation = rectTransform.localPosition;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 
 
@@ -65,12 +66,12 @@ public class UIDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             rectTransform.localPosition = new Vector2(rectTransform.localPosition.x, -550);
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+       /* if (Input.GetKeyDown(KeyCode.Tab))
         {
             CursorState = !CursorState;
             CheckCursor();
         }
-
+       */
         if (Input.GetKeyDown(KeyCode.P))
         {
             ResetPosition();
@@ -99,7 +100,7 @@ public class UIDrag : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         }
         if (CursorState == false)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = false;
             _CameraManager.Instance.CanCam = true;
             
