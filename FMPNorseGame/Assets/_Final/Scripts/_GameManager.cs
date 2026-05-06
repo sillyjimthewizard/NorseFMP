@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class _GameManager : MonoBehaviour
@@ -141,7 +142,8 @@ public class _GameManager : MonoBehaviour
 
     public TMP_Text CurrencyText;
     public GameObject HowToPlay;
-    public GameObject GameCam, GameCamPoint;
+    public GameObject GameCamPoint;
+    public CinemachineCamera CutsceneCam, GameCam, MenuCam;
     public GameObject UpgradeUI;
 
     private void Start()
@@ -159,11 +161,15 @@ public class _GameManager : MonoBehaviour
         GameObject MainMenu = GameObject.Find("MainMenu");
         MainMenu.SetActive(false);
         Gamestate = 1;
-        GameObject MenuCam = GameObject.Find("Menu Cam");
-        MenuCam.SetActive(false);
+        MenuCam = GameObject.Find("Menu Cam").GetComponent<CinemachineCamera>();
+        CutsceneCam = GameObject.Find("CutsceneCam").GetComponent<CinemachineCamera>(); 
+        GameCam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
+        MenuCam.Priority.Value = 0;
+        CutsceneCam.Priority.Value = 1;
         GameCamPoint.SetActive(true);
-        GameCam.SetActive(true);
+  
         UpgradeUI.SetActive(true);
+        StartBossAnim();
     }
 
     public void HowTo()
@@ -183,8 +189,15 @@ public class _GameManager : MonoBehaviour
 
     public void StartBossAnim()
     {
+        if (BossStage == 0)
+        {
+           GameCam.Priority.Value = 2;
+
+        }
+
         if (BossStage == 1)
         {
+            GameCam.Priority.Value = 0;
             CurrentBoss = Instantiate(Fenrir);
             CurrentBoss.name = "Fenrir";
             BossAnimator = GameObject.Find("Fenrir").GetComponent<Animator>();
@@ -199,6 +212,7 @@ public class _GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         BossAnimator.SetInteger("ActionType_int", 0);
+        GameCam.Priority.Value = 2;
     }
 
 
