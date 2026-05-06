@@ -49,6 +49,12 @@ public class _HealthScript : MonoBehaviour
             {
                 _GameManager.Instance.BossStage++;
                 SetHp();
+                if (_GameManager.Instance.CurrentBoss != null)
+                {
+                    Destroy(_GameManager.Instance.CurrentBoss);
+                    
+                }
+                _GameManager.Instance.StartBossAnim();
             }
             else
             {

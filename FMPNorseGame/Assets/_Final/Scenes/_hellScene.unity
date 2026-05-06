@@ -3107,6 +3107,9 @@ MonoBehaviour:
   GlobalTime: 0
   BossStage: 0
   Gamestate: 0
+  BossAnimator: {fileID: 0}
+  Fenrir: {fileID: 493776380276460783, guid: 235911fe10e378443b8568472427823c, type: 3}
+  CurrentBoss: {fileID: 0}
   SpawnPoints: []
   Unit: {fileID: 6532201046043209883, guid: 1ffc73e3b6df20345a471734f0fd9c36, type: 3}
   SpawnNumber: 0
@@ -11110,7 +11113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: -92.7}
+  m_AnchoredPosition: {x: -3, y: 42.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992701622

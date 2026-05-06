@@ -33,6 +33,13 @@ public class _GameManager : MonoBehaviour
     public int BossStage;
     public int Gamestate; // 0 = main menu 1 = gameplay 
 
+    [Header("Boss Variables")]
+    public Animator BossAnimator;
+    public GameObject Fenrir;
+    public GameObject CurrentBoss;
+
+
+
     public void Awake()
     {
         Instance = this;
@@ -86,7 +93,7 @@ public class _GameManager : MonoBehaviour
         UpgradeIntValue(1, SpawnPointStart);
     }
 
-   
+
 
 
 
@@ -130,7 +137,7 @@ public class _GameManager : MonoBehaviour
     #endregion
 
 
-    #region UI and Boss
+    #region UI 
 
     public TMP_Text CurrencyText;
     public GameObject HowToPlay;
@@ -139,7 +146,7 @@ public class _GameManager : MonoBehaviour
 
     private void Start()
     {
-       // CurrencyText = GameObject.Find("CurrencyText").GetComponent<TMP_Text>();
+        // CurrencyText = GameObject.Find("CurrencyText").GetComponent<TMP_Text>();
     }
     private void Update()
     {
@@ -167,15 +174,35 @@ public class _GameManager : MonoBehaviour
     public void StopHowTo()
     {
         HowToPlay.SetActive(false);
-    
-}
+
+    }
 
     #endregion
 
+    #region Boss 
+
+    public void StartBossAnim()
+    {
+        if (BossStage == 1)
+        {
+            CurrentBoss = Instantiate(Fenrir);
+            CurrentBoss.name = "Fenrir";
+            BossAnimator = GameObject.Find("Fenrir").GetComponent<Animator>();
+            Time.timeScale = 0.25f;
+            BossAnimator.SetInteger("ActionType_int", 6);
+            Invoke("StopAnim", 2);
+        }
+
+    }
+
+    public void StopAnim()
+    {
+        Time.timeScale = 1f;
+        BossAnimator.SetInteger("ActionType_int", 0);
+    }
 
 
-
-
+    #endregion
 
 }
 
