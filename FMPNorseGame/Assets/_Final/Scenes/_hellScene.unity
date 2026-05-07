@@ -458,6 +458,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3334346, guid: 5549d9de43cc65b44ab490572cc13dc2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: baeebbb8bb521114eafa50509c6911b0, type: 3}
     - target: {fileID: 64872413863909168, guid: 5549d9de43cc65b44ab490572cc13dc2, type: 3}
       propertyPath: m_ProvidesContacts
       value: 1
@@ -3026,7 +3030,7 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 64
-  Camera: {fileID: 0}
+  Camera: {fileID: 1639875706}
   PlacementClamp: 0
   GodBeingPlaced: {fileID: 0}
 --- !u!1001 &362425221
@@ -4816,6 +4820,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3334346, guid: 5549d9de43cc65b44ab490572cc13dc2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: baeebbb8bb521114eafa50509c6911b0, type: 3}
     - target: {fileID: 64872413863909168, guid: 5549d9de43cc65b44ab490572cc13dc2, type: 3}
       propertyPath: m_ProvidesContacts
       value: 1
@@ -10045,6 +10053,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3334346, guid: 5549d9de43cc65b44ab490572cc13dc2, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: baeebbb8bb521114eafa50509c6911b0, type: 3}
     - target: {fileID: 64872413863909168, guid: 5549d9de43cc65b44ab490572cc13dc2, type: 3}
       propertyPath: m_ProvidesContacts
       value: 1

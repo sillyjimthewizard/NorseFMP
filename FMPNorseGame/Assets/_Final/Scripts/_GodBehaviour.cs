@@ -21,7 +21,7 @@ public class _GodBehaviour : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("UpdateTarget",0f, 0.2f);
-        ThisTransform = this.transform;
+        //ThisTransform = this.transform;
         FireRate = 2;
     }
 
