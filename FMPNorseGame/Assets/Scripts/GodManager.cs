@@ -135,7 +135,16 @@ public class GodManager : MonoBehaviour
         }
         else if (GodNumber == "7")
         {
-            GodSelection("SpawnRateGod");
+           
+
+            GameObject[] NullCheck = GameObject.FindGameObjectsWithTag("God3");
+            int NumberOfFreja = NullCheck.Length;
+            if (NumberOfFreja == 0)
+            {
+                GodSelection("SpawnRateGod");
+            }
+            else
+            { }
         }
     }
 

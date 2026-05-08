@@ -14,12 +14,15 @@ public class _GodUiUpgrader : MonoBehaviour
     public float UpgradeCostUtility2;
     public float UpgradeAmount;
     public string GodThisBelongsTo;
+    public Canvas WorldCanvas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        WorldCanvas = this.GetComponentInChildren < Canvas > ();
         cameraTransform = GameObject.Find("CinemachineCamera").transform;
-        gameManager = GameObject.Find("GameManager").GetComponent<_GameManager>(); 
+        gameManager = GameObject.Find("GameManager").GetComponent<_GameManager>();
+        WorldCanvas.worldCamera = GameObject.Find("UIcam").GetComponent<Camera>(); ;
     }
 
     // Update is called once per frame

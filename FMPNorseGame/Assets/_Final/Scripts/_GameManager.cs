@@ -37,6 +37,7 @@ public class _GameManager : MonoBehaviour
     [Header("Boss Variables")]
     public Animator BossAnimator;
     public GameObject Fenrir;
+    public GameObject Nidhogg;
     public GameObject CurrentBoss;
 
 
@@ -205,13 +206,27 @@ public class _GameManager : MonoBehaviour
             BossAnimator.SetInteger("ActionType_int", 6);
             Invoke("StopAnim", 2);
         }
+        if (BossStage == 2)
+        {
+            Destroy(CurrentBoss);
+            GameCam.Priority.Value = 0;
+            CurrentBoss = Instantiate(Nidhogg);
+            CurrentBoss.name = "Nidhogg";
+            BossAnimator = GameObject.Find("Nidhogg").GetComponent<Animator>();
+            Time.timeScale = 0.25f;
+            
+            Invoke("StopAnim", 2);
+        }
 
-    }
+        }
 
     public void StopAnim()
     {
         Time.timeScale = 1f;
-        BossAnimator.SetInteger("ActionType_int", 0);
+        if (BossStage == 1)
+        {
+            BossAnimator.SetInteger("ActionType_int", 0);
+        }
         GameCam.Priority.Value = 2;
     }
 
