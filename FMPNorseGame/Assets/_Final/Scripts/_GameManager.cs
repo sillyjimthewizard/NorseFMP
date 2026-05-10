@@ -38,7 +38,10 @@ public class _GameManager : MonoBehaviour
     public Animator BossAnimator;
     public GameObject Fenrir;
     public GameObject Nidhogg;
+    public GameObject Ratatoskr;
     public GameObject CurrentBoss;
+    public GameObject BossName;
+    public TMP_Text BossTextMesh;
 
 
 
@@ -47,6 +50,8 @@ public class _GameManager : MonoBehaviour
         Instance = this;
         SpawnNumber = 5;
         SetSpawns();
+        BossName = GameObject.Find("BossName");
+        BossTextMesh = BossName.GetComponent<TMP_Text>();
     }
 
     public void FixedUpdate()
@@ -67,6 +72,7 @@ public class _GameManager : MonoBehaviour
 
             }
         }
+        BossTextMesh.text = CurrentBoss.name;
     }
     public void TakeDamage(float damage, GameObject target)
     {
@@ -168,7 +174,7 @@ public class _GameManager : MonoBehaviour
         MenuCam.Priority.Value = 0;
         CutsceneCam.Priority.Value = 1;
         GameCamPoint.SetActive(true);
-  
+    
         UpgradeUI.SetActive(true);
         StartBossAnim();
     }
@@ -190,10 +196,17 @@ public class _GameManager : MonoBehaviour
 
     public void StartBossAnim()
     {
+
+       
+
         if (BossStage == 0)
         {
-           GameCam.Priority.Value = 2;
-
+            GameCam.Priority.Value = 0;
+            CurrentBoss = Instantiate(Ratatoskr);
+            CurrentBoss.name = "Ratatoskr";
+            BossAnimator = GameObject.Find("Ratatoskr").GetComponent<Animator>();
+            BossAnimator.SetInteger("AnimState", 1);
+            Invoke("StopAnim", 6);
         }
 
         if (BossStage == 1)
@@ -223,6 +236,12 @@ public class _GameManager : MonoBehaviour
     public void StopAnim()
     {
         Time.timeScale = 1f;
+        if (BossStage == 0)
+        {
+            BossAnimator.SetInteger("AnimState", 0);
+
+        }
+
         if (BossStage == 1)
         {
             BossAnimator.SetInteger("ActionType_int", 0);
