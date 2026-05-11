@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -11,10 +12,11 @@ public class _GodUiUpgrader : MonoBehaviour
     public float UpgradeCost1;
     public float UpgradeCost2;
     public float UpgradeCostUtility;
-    public float UpgradeCostUtility2;
     public float UpgradeAmount;
     public string GodThisBelongsTo;
     public Canvas WorldCanvas;
+    public TMP_Text UpgradeTextOne, UpgradeTextTwo, UpgradeTextMult; // mult = upgrade cost 2, upgrade text two = utility and upgrade text one = upgrade cost 1;
+    public bool IsFreja;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +24,13 @@ public class _GodUiUpgrader : MonoBehaviour
         WorldCanvas = this.GetComponentInChildren < Canvas > ();
         cameraTransform = GameObject.Find("CinemachineCamera").transform;
         gameManager = GameObject.Find("GameManager").GetComponent<_GameManager>();
-        WorldCanvas.worldCamera = GameObject.Find("UIcam").GetComponent<Camera>(); ;
+        WorldCanvas.worldCamera = GameObject.Find("UIcam").GetComponent<Camera>();
+        if (IsFreja == false)
+        {
+            UpgradeTextMult = GameObject.Find("UpgradeCostMult").GetComponent<TMP_Text>();
+        }
+        UpgradeTextOne = GameObject.Find("UpgradeCost1").GetComponent<TMP_Text>();
+        UpgradeTextTwo = GameObject.Find("UpgradeCost2").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -30,6 +38,21 @@ public class _GodUiUpgrader : MonoBehaviour
     {
         transform.LookAt(cameraTransform.position);
         transform.Rotate(0, 180, 0);
+        if (IsFreja == false)
+        {
+            UpgradeTextMult.text = "Cost: " + UpgradeCost2.ToString("F1");
+            UpgradeTextOne.text = "Cost: " + UpgradeCostUtility.ToString("F1");
+            UpgradeTextTwo.text = "Cost: " + UpgradeCost1.ToString("F1");
+        }
+        else if (IsFreja == true)
+        {
+            UpgradeTextOne.text = "Cost: " + UpgradeCost1.ToString("F1");
+            UpgradeTextTwo.text = "Cost: " + UpgradeCost2.ToString("F1");
+        }
+        
+
+
+
     }
 
    public void UpgradeSpawnRate()
@@ -81,12 +104,12 @@ public class _GodUiUpgrader : MonoBehaviour
 
     public void UpgradeRange(float Increase)
     {
-        if (gameManager.Currency >= UpgradeCostUtility)
+        if (gameManager.Currency >= UpgradeCost1)
         {
             _GodBehaviour GodScript = GameObject.Find(GodThisBelongsTo).GetComponent<_GodBehaviour>();
             GodScript.Range += Increase;
-            gameManager.Currency -= UpgradeCostUtility;
-            UpgradeCostUtility *= 1.3f;
+            gameManager.Currency -= UpgradeCost1;
+            UpgradeCost1 *= 1.3f;
             Debug.Log("rangeUp");
         }
     }
@@ -96,7 +119,7 @@ public class _GodUiUpgrader : MonoBehaviour
         {
             _GodBehaviour GodScript = GameObject.Find(GodThisBelongsTo).GetComponent<_GodBehaviour>();
             GodScript.FireRate -= Increase;
-            gameManager.Currency -= UpgradeCostUtility2;
+            gameManager.Currency -= UpgradeCostUtility;
             UpgradeCostUtility *= 1.3f;
             Debug.Log("FireRateUp");
         }

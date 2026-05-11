@@ -72,7 +72,10 @@ public class _GameManager : MonoBehaviour
 
             }
         }
-        BossTextMesh.text = CurrentBoss.name;
+        if (CurrentBoss != null)
+        {
+            BossTextMesh.text = CurrentBoss.name;
+        }
     }
     public void TakeDamage(float damage, GameObject target)
     {

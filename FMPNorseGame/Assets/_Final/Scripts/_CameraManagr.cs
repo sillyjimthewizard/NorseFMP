@@ -21,7 +21,7 @@ public class _CameraManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (CanCam == true)
+        if (CanCam == true )
         {
             Vector3 InputDir = new Vector3(0, 0, 0);
             //inputlogic
