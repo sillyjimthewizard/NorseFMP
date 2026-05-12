@@ -36,6 +36,7 @@ public class EnemyAi : MonoBehaviour
     public Animator animator;
     Rigidbody[] thephysics;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -79,7 +80,7 @@ public class EnemyAi : MonoBehaviour
         int CoinCount = Mathf.RoundToInt(InitialDistance - DistanceToBoss);
 
         _GameManager.Instance.Currency += CoinCount * CoinMult;
-        //_SoundManager.instance.PlaySound(DeathSound);
+        _SoundManager.instance.PlaySoundLocal(DeathSound);
 
     }
 

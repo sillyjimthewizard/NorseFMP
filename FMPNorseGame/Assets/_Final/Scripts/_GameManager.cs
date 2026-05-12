@@ -42,7 +42,7 @@ public class _GameManager : MonoBehaviour
     public GameObject CurrentBoss;
     public GameObject BossName;
     public TMP_Text BossTextMesh;
-
+    public AudioClip Howl;
 
 
     public void Awake()
@@ -155,10 +155,13 @@ public class _GameManager : MonoBehaviour
     public GameObject GameCamPoint;
     public CinemachineCamera CutsceneCam, GameCam, MenuCam;
     public GameObject UpgradeUI;
+    public  GameObject Menu;
+    public GameObject QuitCheck;
 
     private void Start()
     {
         // CurrencyText = GameObject.Find("CurrencyText").GetComponent<TMP_Text>();
+        Menu = GameObject.Find("Buttons");
     }
     private void Update()
     {
@@ -184,13 +187,32 @@ public class _GameManager : MonoBehaviour
 
     public void HowTo()
     {
+        
+        Menu.SetActive(false);
         HowToPlay.SetActive(true);
     }
 
     public void StopHowTo()
     {
         HowToPlay.SetActive(false);
+        Menu.SetActive(true);
+    }
 
+    public void AreYouSure()
+    {
+        Menu.SetActive(false);
+        QuitCheck.SetActive(true);
+    }
+
+    public void StopSureCheck()
+    {
+        QuitCheck.SetActive(false);
+        Menu.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     #endregion
@@ -199,8 +221,6 @@ public class _GameManager : MonoBehaviour
 
     public void StartBossAnim()
     {
-
-       
 
         if (BossStage == 0)
         {
@@ -220,6 +240,7 @@ public class _GameManager : MonoBehaviour
             BossAnimator = GameObject.Find("Fenrir").GetComponent<Animator>();
             Time.timeScale = 0.25f;
             BossAnimator.SetInteger("ActionType_int", 6);
+            _SoundManager.instance.PlaySound(Howl);
             Invoke("StopAnim", 2);
         }
         if (BossStage == 2)

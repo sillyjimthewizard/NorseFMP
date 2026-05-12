@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class _SoundManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class _SoundManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField]
     private AudioClip music;
+    public AudioClip Buttons;
 
     [Header("Particles")]
     [SerializeField]
@@ -38,6 +40,23 @@ public class _SoundManager : MonoBehaviour
         newSoundObject.transform.SetParent(SoundTrash); //Moves object into the trash folder
         AudioSource audioSource = newSoundObject.AddComponent<AudioSource>(); //adds an audio source
         audioSource.clip = audioClip; //assigns the audio clip from the argument
+        //audioSource.clip = collision; //assigns the audio clip from the argument
+        audioSource.Play(); //Plays the sound
+        Destroy(newSoundObject, audioClip.length); //Destroys the object after the sound completes playing    
+
+    }
+
+    public void PlaySoundLocal(AudioClip audioClip)
+    {
+        GameObject newSoundObject = new GameObject("SFX"); //Creates a new object in the heirachy
+        newSoundObject.transform.SetParent(_GameManager.Instance.CurrentBoss.transform); //Moves object into the trash folder
+        newSoundObject.transform.position = _GameManager.Instance.CurrentBoss.transform.position;
+        AudioSource audioSource = newSoundObject.AddComponent<AudioSource>(); //adds an audio source
+        audioSource.clip = audioClip; //assigns the audio clip from the argument
+        audioSource.maxDistance = 1f;
+        audioSource.minDistance = 2f;
+        audioSource.spatialBlend = 1;
+        audioSource.rolloffMode = AudioRolloffMode.Linear;
         //audioSource.clip = collision; //assigns the audio clip from the argument
         audioSource.Play(); //Plays the sound
         Destroy(newSoundObject, audioClip.length); //Destroys the object after the sound completes playing    
@@ -76,6 +95,18 @@ public class _SoundManager : MonoBehaviour
         NewParticle.transform.SetParent(SoundTrash);
         Destroy(NewParticle, Duration);
         
+
+    }
+
+    public void PlayButtonSound()
+    {
+        GameObject newSoundObject = new GameObject("SFX"); //Creates a new object in the heirachy
+        newSoundObject.transform.SetParent(SoundTrash); //Moves object into the trash folder
+        AudioSource audioSource = newSoundObject.AddComponent<AudioSource>(); //adds an audio source
+        audioSource.clip = Buttons; //assigns the audio clip from the argument
+        //audioSource.clip = collision; //assigns the audio clip from the argument
+        audioSource.Play(); //Plays the sound
+        Destroy(newSoundObject, Buttons.length); //Destroys the object after the sound completes playing    
 
     }
 

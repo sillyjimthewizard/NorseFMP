@@ -166,7 +166,7 @@ MonoBehaviour:
   point2: 0
   point3: 0
   pointCounter: 0
-  DeathSound: {fileID: 0}
+  DeathSound: {fileID: 8300000, guid: d3b94d595dbd53a43966189f72f3b9ad, type: 3}
   SpawnSound: {fileID: 0}
   SpawnEffect: {fileID: 1944646428925954, guid: d92be02a90149e64d94ca3a2f20cd645, type: 3}
   DeathEffect: {fileID: 1277154925287174, guid: 3b517eddec185dd4a830743a742ad00b, type: 3}
