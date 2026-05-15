@@ -14,6 +14,8 @@ public class _HealthScript : MonoBehaviour
     [SerializeField] private Image HealthSprite;
     [SerializeField] private TextMeshProUGUI HealthText;
 
+    public bool GameNotEnded;
+
     [Header("Floats")]
     public float Health;
     
@@ -22,7 +24,7 @@ public class _HealthScript : MonoBehaviour
 
     public void SetHp()
     {
-        if (isBoss)
+        if (isBoss && _GameManager.Instance.BossStage != 3)
         {
             CurrentStats = BossStats[_GameManager.Instance.BossStage];
             BossData = (BossDataMaker)CurrentStats;
@@ -42,28 +44,39 @@ public class _HealthScript : MonoBehaviour
 
     private void Update()
     {
-
-        if (Health <= 0)
+        if (GameNotEnded == true)
         {
-            if (isBoss)
+            if (Health <= 0)
             {
-                _GameManager.Instance.BossStage++;
-                SetHp();
-                if (_GameManager.Instance.CurrentBoss != null)
+                if (isBoss)
                 {
-                    Destroy(_GameManager.Instance.CurrentBoss);
-                    
+                    _GameManager.Instance.BossStage++;
+                    if (_GameManager.Instance.BossStage != 3)
+                    {
+                        SetHp();
+                    }
+                    else
+                    {
+                        GameNotEnded = false;
+                    }
+                    if (_GameManager.Instance.CurrentBoss != null)
+                    {
+                        Destroy(_GameManager.Instance.CurrentBoss);
+
+                    }
+                    _GameManager.Instance.StartBossAnim();
+
+
                 }
-                _GameManager.Instance.StartBossAnim();
-            }
-            else
-            {
-                Destroy(this.gameObject);
+
+
+
             }
 
+
+            UpdateHealthBar(BossData.BossHp, Health);
         }
-
-        UpdateHealthBar(BossData.BossHp, Health);
+       
     }
 
     public void UpdateHealthBar(float maxhealth, float currenthealth)

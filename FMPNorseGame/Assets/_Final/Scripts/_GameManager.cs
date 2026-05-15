@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class _GameManager : MonoBehaviour
 {
@@ -157,6 +158,7 @@ public class _GameManager : MonoBehaviour
     public GameObject UpgradeUI;
     public  GameObject Menu;
     public GameObject QuitCheck;
+    public GameObject EndScreen;
 
     private void Start()
     {
@@ -215,6 +217,18 @@ public class _GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void EndGame()
+    {
+        EndScreen.SetActive(true);
+        UpgradeUI.SetActive(false);
+
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     #endregion
 
     #region Boss 
@@ -252,10 +266,16 @@ public class _GameManager : MonoBehaviour
             BossAnimator = GameObject.Find("Nidhogg").GetComponent<Animator>();
             Time.timeScale = 0.25f;
             
-            Invoke("StopAnim", 2);
+            Invoke("StopAnim", 1.25f);
         }
 
+        if (BossStage == 3)
+        {
+            EndGame();
+            
         }
+
+    }
 
     public void StopAnim()
     {

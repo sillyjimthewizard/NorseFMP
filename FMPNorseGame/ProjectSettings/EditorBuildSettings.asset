@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Final/Scenes/_MainScene.unity
     guid: 49559308747990048a40d1d46bb3b121
+  - enabled: 1
+    path: Assets/_Final/Scenes/_hellScene.unity
+    guid: 583b66c80a2fe6c4c8f2276013cee419
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
