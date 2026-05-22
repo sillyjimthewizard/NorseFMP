@@ -177,11 +177,11 @@ public class _GameManager : MonoBehaviour
         MainMenu.SetActive(false);
         Gamestate = 1;
         MenuCam = GameObject.Find("Menu Cam").GetComponent<CinemachineCamera>();
-        //CutsceneCam = GameObject.Find("CutsceneCam").GetComponent<CinemachineCamera>(); 
-       // GameCam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
+        CutsceneCam = GameObject.Find("CutsceneCam").GetComponent<CinemachineCamera>(); 
+        GameCam = GameObject.Find("CinemachineCamera").GetComponent<CinemachineCamera>();
         MenuCam.Priority.Value = -1;
-       // CutsceneCam.Priority.Value = 1;
-        //GameCamPoint.SetActive(true);
+        CutsceneCam.Priority.Value = 1;
+        GameCamPoint.SetActive(true);
     
         UpgradeUI.SetActive(true);
         StartBossAnim();
